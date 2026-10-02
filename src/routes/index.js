@@ -1,12 +1,12 @@
 import express from "express"
 import livrosRoutes from "./livrosRoutes.js"
+import autoresRoutes from "./autoresRoutes.js"
 
 const routes = (app) => {
-    app.route("/").get((req, res) => {
-        res.status(200).send("Curso de Nodejs")
-    })
+    app.use(express.json())
 
-    app.use(express.json(), livrosRoutes)
+    app.use(livrosRoutes)
+    app.use(autoresRoutes)
 }
 
 export default routes
